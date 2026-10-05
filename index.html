@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Defender - 2D Computer Graphics Mini Project</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for crisp futuristic sci-fi typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="gameContainer">
+        <!-- Main 2D Canvas where all Computer Graphics objects are rendered -->
+        <canvas id="gameCanvas"></canvas>
+
+        <!-- Dynamic HUD (Heads-Up Display) visible during gameplay -->
+        <div id="hud" class="hud-layer hidden">
+            <div class="hud-box">
+                <span class="hud-label">SCORE</span>
+                <span id="scoreVal" class="hud-value">00000</span>
+            </div>
+            <div class="hud-box">
+                <span class="hud-label">LEVEL</span>
+                <span id="levelVal" class="hud-value">1</span>
+            </div>
+            <div class="hud-box">
+                <span class="hud-label">LIVES</span>
+                <div id="livesContainer" class="lives-display">
+                    <span class="life-icon">▲</span>
+                    <span class="life-icon">▲</span>
+                    <span class="life-icon">▲</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pause Banner Overlay -->
+        <div id="pauseOverlay" class="screen-overlay hidden">
+            <div class="modal-card mini-card">
+                <h2 class="glow-text-cyan">GAME PAUSED</h2>
+                <p>Mission suspended. Select an action:</p>
+                <div class="btn-group-vertical">
+                    <button id="resumeBtn" class="btn btn-primary">RESUME GAME</button>
+                    <button id="pauseRestartBtn" class="btn btn-secondary">RESTART GAME</button>
+                    <button id="quitBtn" class="btn btn-danger">QUIT TO MENU</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Start Screen Modal -->
+        <div id="startScreen" class="screen-overlay">
+            <div class="modal-card">
+                <h1 class="glow-text-cyan title">SPACE DEFENDER</h1>
+                <p class="subtitle">Defend the galaxy against alien invaders and asteroid swarms!</p>
+
+                <div class="controls-panel">
+                    <h3>MISSION CONTROLS</h3>
+                    <div class="control-grid">
+                        <div class="control-item"><kbd>A</kbd> / <kbd>←</kbd> <span>Move Left</span></div>
+                        <div class="control-item"><kbd>D</kbd> / <kbd>→</kbd> <span>Move Right</span></div>
+                        <div class="control-item"><kbd>SPACE</kbd> <span>Fire Laser Cannon</span></div>
+                        <div class="control-item"><kbd>P</kbd> <span>Pause / Resume</span></div>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button id="startBtn" class="btn btn-primary">START MISSION</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Over Screen Modal -->
+        <div id="gameOverScreen" class="screen-overlay hidden">
+            <div class="modal-card">
+                <h1 class="glow-text-red title">MISSION FAILED</h1>
+                <p class="subtitle">Your ship was destroyed by hostile forces.</p>
+
+                <div class="stats-panel">
+                    <div class="stat-row">
+                        <span>FINAL SCORE</span>
+                        <strong id="finalScoreVal" class="stat-highlight">0</strong>
+                    </div>
+                    <div class="stat-row">
+                        <span>SECTOR REACHED</span>
+                        <strong id="finalLevelVal">Level 1</strong>
+                    </div>
+                    <div class="stat-row">
+                        <span>HIGH SCORE</span>
+                        <strong id="highScoreVal">0</strong>
+                    </div>
+                </div>
+
+                <button id="restartBtn" class="btn btn-primary glow-btn">RESTART MISSION</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Main Game Script -->
+    <script src="game.js"></script>
+</body>
+</html>
